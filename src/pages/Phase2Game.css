@@ -1,0 +1,238 @@
+.phase2-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.phase2-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 72px clamp(14px, 4vw, 56px) clamp(12px, 2.5vh, 40px);
+  overflow: auto;
+}
+
+.phase2-scene {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  /* Lets mascot / bubble use cqw so they scale with the scene image width */
+  container-type: inline-size;
+  container-name: phase2;
+}
+
+.phase2-bg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  border: 3px solid rgba(255, 255, 255, 0.35);
+  vertical-align: top;
+}
+
+/* HUD — top left */
+.phase2-hud {
+  position: absolute;
+  left: 3%;
+  top: 5%;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  pointer-events: none;
+}
+
+.phase2-banner {
+  font-family: var(--font-display);
+  font-size: clamp(18px, 2.4vw, 26px);
+  font-weight: 800;
+  color: var(--green-darkest);
+  background: linear-gradient(180deg, #f5edd8 0%, #e8dcc8 100%);
+  padding: 8px 20px;
+  border-radius: 8px;
+  border: 2px solid rgba(45, 122, 58, 0.35);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+}
+
+.phase2-counter-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: linear-gradient(135deg, var(--green-dark), var(--green-darkest));
+  color: #fff;
+  padding: 10px 18px 12px;
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  min-width: 120px;
+}
+
+.phase2-counter-label {
+  font-size: clamp(11px, 1.4vw, 13px);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.phase2-counter-value {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 800;
+}
+
+/* Mascot + bubble */
+.phase2-mascot-block {
+  position: absolute;
+  /* Anchor: lower-left corner of this block (feet sit on the bottom edge). */
+  left: 65%;
+  bottom: 30%;
+  transform: none;
+  width: min(38%, 360px);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.phase2-bubble {
+  background: rgba(255, 255, 255, 0.96);
+  border: 2px solid rgba(45, 122, 58, 0.25);
+  border-radius: 12px;
+  padding: 8px 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  align-self: center;
+  max-width: min(200px, 78%);
+  width: fit-content;
+  box-sizing: border-box;
+}
+
+.phase2-bubble p {
+  margin: 0;
+  font-size: clamp(11px, 1.35vw, 13px);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--green-darkest);
+  text-align: center;
+}
+
+.phase2-mascot {
+  width: min(78%, 200px);
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+}
+
+/* Trash layer */
+.phase2-items-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.phase2-items-layer > .phase2-trash {
+  pointer-events: auto;
+}
+
+.phase2-trash {
+  position: absolute;
+  padding: 6px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: opacity 0.25s ease;
+  box-sizing: content-box;
+  min-width: 36px;
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(-50%, -50%);
+}
+
+.phase2-trash img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+}
+
+.phase2-trash--under-rock {
+  z-index: 2;
+}
+
+.phase2-rock {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
+  transform: translate(-50%, -50%);
+  height: auto;
+}
+
+.phase2-rock--left {
+  left: 17%;
+  top: 89%;
+  width: min(10%, 280px);
+}
+
+.phase2-rock--right {
+  left: 84%;
+  top: 77%;
+  width: min(10%, 280px);
+}
+
+.phase2-trash:not(.phase2-trash--under-rock) {
+  z-index: 4;
+}
+
+.phase2-trash--picked {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.phase2-complete {
+  position: absolute;
+  left: 50%;
+  bottom: 8%;
+  transform: translateX(-50%);
+  z-index: 30;
+}
+
+.phase2-continue {
+  padding: 14px 48px;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
+  border-radius: 999px;
+  box-shadow: 0 6px 20px rgba(45, 122, 58, 0.45);
+  border: none;
+  cursor: pointer;
+}
+
+.phase2-continue:hover {
+  filter: brightness(1.06);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+  .phase2-mascot-block {
+    width: min(44%, 280px);
+    left: 52%;
+    bottom: 10%;
+  }
+}

@@ -1,0 +1,266 @@
+.instruction-page {
+  min-height: 100vh;
+}
+
+.instruction-bg {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
+
+.instruction-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(220, 235, 210, 0.82);
+  z-index: 0;
+}
+
+.instruction-content {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 90px 32px 32px;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Title */
+.instruction-title {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 800;
+  font-style: italic;
+  color: var(--green-darkest);
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+/* Body: tabs + card side by side */
+.instruction-body {
+  display: flex;
+  gap: 24px;
+  width: 100%;
+  align-items: flex-start;
+  flex: 1;
+}
+
+/* Stage tabs (left) */
+.stage-tabs {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex-shrink: 0;
+  width: 180px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 16px;
+  border: 2px solid rgba(45, 122, 58, 0.2);
+  overflow: hidden;
+}
+
+.stage-tab {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 16px;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(45, 122, 58, 0.1);
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--green-darkest);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.stage-tab:last-child {
+  border-bottom: none;
+}
+
+.stage-tab:hover {
+  background: rgba(45, 122, 58, 0.08);
+}
+
+.stage-tab.active {
+  background: rgba(45, 122, 58, 0.12);
+  box-shadow: inset 4px 0 0 var(--green-primary);
+}
+
+.stage-tab-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+}
+
+.stage-tab-label {
+  white-space: nowrap;
+}
+
+/* Instruction card (right) */
+.instruction-card {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 16px;
+  border: 2px solid var(--green-primary);
+  padding: 28px 32px;
+  min-height: 280px;
+}
+
+.card-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--green-darkest);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid rgba(45, 122, 58, 0.15);
+}
+
+.card-instructions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.instruction-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.instruction-bullet-icon {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.instruction-text-block {
+  flex: 1;
+}
+
+.instruction-text {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--green-darkest);
+  line-height: 1.6;
+}
+
+.instruction-text b {
+  font-weight: 700;
+}
+
+.instruction-list {
+  margin-top: 8px;
+  padding-left: 20px;
+  list-style: disc;
+}
+
+.instruction-list li {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--green-darkest);
+  line-height: 1.6;
+  list-style: disc;
+}
+
+.instruction-list li b {
+  color: var(--green-dark);
+}
+
+/* Skip button */
+.skip-button {
+  margin-top: 28px;
+  padding: 14px 64px;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--green-darkest), #0d3320);
+  border-radius: 32px;
+  box-shadow: 0 4px 16px rgba(26, 77, 46, 0.35);
+  transition: all 0.3s;
+}
+
+.skip-button:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(26, 77, 46, 0.45);
+}
+
+.skip-button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .instruction-content {
+    padding: 80px 16px 24px;
+  }
+
+  .instruction-title {
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+
+  .instruction-body {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .stage-tabs {
+    width: 100%;
+    flex-direction: row;
+  }
+
+  .stage-tab {
+    flex: 1;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px 8px;
+    border-bottom: none;
+    border-right: 1px solid rgba(45, 122, 58, 0.1);
+    text-align: center;
+    font-size: 13px;
+  }
+
+  .stage-tab:last-child {
+    border-right: none;
+  }
+
+  .stage-tab.active {
+    box-shadow: inset 0 -3px 0 var(--green-primary);
+  }
+
+  .stage-tab-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .instruction-card {
+    padding: 20px;
+  }
+
+  .card-title {
+    font-size: 18px;
+  }
+
+  .instruction-text {
+    font-size: 14px;
+  }
+
+  .skip-button {
+    font-size: 17px;
+    padding: 12px 48px;
+  }
+}

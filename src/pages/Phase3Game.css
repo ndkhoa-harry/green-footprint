@@ -1,0 +1,371 @@
+.phase3-page {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.phase3-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 72px clamp(14px, 4vw, 56px) clamp(12px, 2.5vh, 40px);
+  overflow: auto;
+}
+
+.phase3-scene {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  container-type: inline-size;
+  container-name: phase3;
+}
+
+.phase3-bg {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  border: 3px solid rgba(255, 255, 255, 0.35);
+  vertical-align: top;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* --- Instruction --- */
+.phase3-instruction-bubble-wrap {
+  position: absolute;
+  left: 50%;
+  top: 14%;
+  transform: translateX(-50%);
+  z-index: 15;
+  width: min(92%, 440px);
+  pointer-events: none;
+  display: flex;
+  justify-content: center;
+}
+
+.phase3-instruction-bubble {
+  position: relative;
+  background: rgba(255, 255, 255, 0.98);
+  border: 2px solid rgba(26, 40, 22, 0.88);
+  border-radius: 16px;
+  padding: 12px 16px 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.14);
+  box-sizing: border-box;
+}
+
+/* Speech tail toward mascot (mid scene) */
+.phase3-instruction-bubble::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -11px;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 13px solid transparent;
+  border-right: 13px solid transparent;
+  border-top: 12px solid rgba(26, 40, 22, 0.88);
+}
+
+.phase3-instruction-bubble::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
+  border-top: 10px solid rgba(255, 255, 255, 0.98);
+  z-index: 1;
+}
+
+.phase3-instruction-bubble p {
+  margin: 0;
+  font-size: clamp(12px, 2.8cqw, 15px);
+  font-weight: 600;
+  line-height: 1.45;
+  color: var(--green-darkest);
+  text-align: center;
+}
+
+.phase3-instruction-footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 5%;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.phase3-start {
+  pointer-events: auto;
+  padding: 14px 40px;
+  font-family: var(--font-display);
+  font-size: clamp(17px, 2.2vw, 22px);
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
+  border-radius: 999px;
+  box-shadow: 0 6px 22px rgba(45, 122, 58, 0.45);
+  border: none;
+  cursor: pointer;
+}
+
+.phase3-start:hover {
+  filter: brightness(1.06);
+  transform: translateY(-2px);
+}
+
+.phase3-timer {
+  position: absolute;
+  left: 50%;
+  top: 5%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: min(52%, 420px);
+  pointer-events: none;
+}
+
+.phase3-timer-track {
+  flex: 1;
+  height: 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid rgba(45, 122, 58, 0.2);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.phase3-timer-fill {
+  height: 100%;
+  width: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--green-primary), var(--green-dark));
+  transform-origin: left center;
+  transition: transform 0.08s linear;
+}
+
+.phase3-timer-value {
+  font-family: var(--font-display);
+  font-size: clamp(15px, 1.8vw, 18px);
+  font-weight: 800;
+  color: var(--green-darkest);
+  min-width: 2.5em;
+  text-align: right;
+}
+
+/* Wrong bin: item wiggles & vanishes at drop point (see .phase3-penalty-float). */
+
+/* Drop targets — align with bins in game_3_scene_2.png (tweak % if art shifts). */
+.phase3-bins-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.phase3-bin-hit {
+  position: absolute;
+  pointer-events: auto;
+  bottom: 6%;
+  height: 34%;
+  border-radius: 12px;
+  /* background: rgba(255, 0, 0, 0.12); */
+}
+
+.phase3-bin-hit--organic {
+  left: 4%;
+  width: 28%;
+}
+
+.phase3-bin-hit--inorganic {
+  left: 36%;
+  width: 28%;
+}
+
+.phase3-bin-hit--recyclable {
+  left: 68%;
+  width: 28%;
+}
+
+/* Draggable item — centered in scene (anchor keeps centering separate from item motion). */
+.phase3-trash-anchor {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.phase3-trash-home {
+  position: relative;
+  width: min(28cqw, 26%);
+  min-width: 88px;
+  max-width: 200px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: grab;
+  touch-action: none;
+  pointer-events: auto;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.25));
+}
+
+.phase3-trash-home:active {
+  cursor: grabbing;
+}
+
+.phase3-trash-home img {
+  width: 100%;
+  height: auto;
+  display: block;
+  pointer-events: none;
+}
+
+.phase3-trash-float {
+  position: fixed;
+  z-index: 100;
+  pointer-events: none;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.35));
+}
+
+.phase3-trash-float img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Wrong sort: wiggle at drop position, then instant hide (no fade). */
+.phase3-penalty-float {
+  position: fixed;
+  z-index: 110;
+  pointer-events: none;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.35));
+}
+
+.phase3-penalty-float-inner {
+  width: 100%;
+  height: 100%;
+  animation: phase3-penalty-vanish 0.68s linear forwards;
+}
+
+.phase3-penalty-float-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+@keyframes phase3-penalty-vanish {
+  0% {
+    visibility: visible;
+    transform: rotate(0deg) translateX(0) scale(1);
+  }
+  12% {
+    transform: rotate(-10deg) translateX(-8px) scale(1.04);
+  }
+  24% {
+    transform: rotate(10deg) translateX(8px) scale(1.04);
+  }
+  36% {
+    transform: rotate(-8deg) translateX(-6px) scale(1.02);
+  }
+  48% {
+    transform: rotate(8deg) translateX(6px) scale(1.02);
+  }
+  72% {
+    visibility: visible;
+    transform: rotate(0deg) translateX(0) scale(1);
+  }
+  72.01%,
+  100% {
+    visibility: hidden;
+    transform: scale(0);
+  }
+}
+
+.phase3-complete {
+  position: absolute;
+  left: 50%;
+  bottom: 8%;
+  transform: translateX(-50%);
+  z-index: 30;
+}
+
+.phase3-continue {
+  padding: 14px 48px;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
+  border-radius: 999px;
+  box-shadow: 0 6px 20px rgba(45, 122, 58, 0.45);
+  border: none;
+  cursor: pointer;
+}
+
+.phase3-continue:hover {
+  filter: brightness(1.06);
+  transform: translateY(-2px);
+}
+
+@keyframes phase3-penalty-vanish-reduced {
+  0%,
+  70% {
+    visibility: visible;
+    transform: scale(1);
+  }
+  70.01%,
+  100% {
+    visibility: hidden;
+    transform: scale(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .phase3-penalty-float-inner {
+    animation: phase3-penalty-vanish-reduced 0.28s linear forwards;
+  }
+}
+
+@media (max-width: 600px) {
+  .phase3-instruction-bubble-wrap {
+    top: 10%;
+    width: min(94%, 380px);
+  }
+
+  .phase3-bin-hit {
+    bottom: 4%;
+    height: 38%;
+  }
+
+  .phase3-trash-home {
+    width: min(32cqw, 30%);
+    max-width: 160px;
+    min-width: 72px;
+  }
+
+  .phase3-timer {
+    width: min(70%, 360px);
+    top: 3%;
+  }
+}

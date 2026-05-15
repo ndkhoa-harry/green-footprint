@@ -1,0 +1,182 @@
+.input-page {
+  min-height: 100vh;
+}
+
+.input-hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
+
+.input-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding-top: 80px;
+}
+
+/* Mascot on the left */
+.input-mascot {
+  position: absolute;
+  left: 24px;
+  bottom: 20px;
+  width: 220px;
+  height: auto;
+  object-fit: contain;
+  z-index: 2;
+  animation: mascotSway 2.5s ease-in-out infinite;
+}
+
+@keyframes mascotSway {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-6px) rotate(-2deg); }
+}
+
+/* Center form area */
+.input-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 5;
+  width: 100%;
+  max-width: 560px;
+  padding: 0 24px;
+}
+
+.input-title {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 800;
+  font-style: italic;
+  color: var(--green-darkest);
+  text-align: center;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.leaf-icon {
+  font-size: 32px;
+}
+
+.input-subtitle {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--green-darkest);
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+/* Form */
+.input-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.form-group {
+  width: 100%;
+}
+
+.form-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--green-darkest);
+  margin-bottom: 8px;
+  padding-left: 4px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 14px 20px;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--green-darkest);
+  background: rgba(255, 255, 255, 0.9);
+  border: 2px solid var(--green-primary);
+  border-radius: 12px;
+  outline: none;
+  transition: all 0.25s;
+}
+
+.form-input::placeholder {
+  color: #9caa9c;
+  font-weight: 400;
+}
+
+.form-input:focus {
+  border-color: var(--green-dark);
+  box-shadow: 0 0 0 3px rgba(58, 157, 79, 0.2);
+  background: #ffffff;
+}
+
+.submit-button {
+  margin-top: 8px;
+  padding: 14px 56px;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #ffffff;
+  background: linear-gradient(135deg, var(--green-primary), var(--green-dark));
+  border-radius: 32px;
+  box-shadow: 0 4px 16px rgba(45, 122, 58, 0.35);
+  transition: all 0.3s;
+}
+
+.submit-button:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(45, 122, 58, 0.45);
+}
+
+.submit-button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .input-mascot {
+    width: 140px;
+    left: 8px;
+    bottom: 12px;
+  }
+
+  .input-title {
+    font-size: 32px;
+  }
+
+  .leaf-icon {
+    font-size: 24px;
+  }
+
+  .input-subtitle {
+    font-size: 16px;
+  }
+
+  .form-input {
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+
+  .submit-button {
+    font-size: 18px;
+    padding: 12px 44px;
+  }
+}

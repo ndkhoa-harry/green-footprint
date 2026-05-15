@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap');
+
+:root {
+  --green-darkest: #1a4d2e;
+  --green-dark: #2d7a3a;
+  --green-primary: #3a9d4f;
+  --green-light: #5bc469;
+  --green-lightest: #e8f5e9;
+  --gold: #ffc107;
+  --gold-dark: #e6a800;
+  --white: #ffffff;
+  --text-dark: #1a2e1a;
+  --text-light: #f0f7f0;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.15);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.2);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --font-display: 'Baloo 2', cursive;
+  --font-body: 'Quicksand', sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-dark);
+  background: var(--green-lightest);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-family: var(--font-body);
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
