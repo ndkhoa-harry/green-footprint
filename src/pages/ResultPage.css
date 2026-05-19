@@ -25,6 +25,9 @@
   flex: 1;
   min-height: 0;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
@@ -33,14 +36,31 @@
   container-name: result;
 }
 
+/* Title → ribbon → badge → caption → buttons — equal gaps, centered as one block */
+.result-main {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 1.8cqh, 18px);
+  width: min(92cqw, 720px);
+  max-height: 100%;
+  padding: min(1.5cqh, 12px) min(2cqw, 16px);
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.result-main > * {
+  flex-shrink: 0;
+}
+
 /* Curved “CHÚC MỪNG” — arches upward like the design */
 .result-title-wrap {
-  position: absolute;
-  left: 50%;
-  top: 8cqh;
-  transform: translateX(-50%);
-  z-index: 5;
-  width: min(88cqw, 640px);
+  position: relative;
+  width: min(100%, 640px);
+  line-height: 0;
   overflow: visible;
   pointer-events: none;
 }
@@ -50,6 +70,7 @@
   height: auto;
   overflow: visible;
   display: block;
+  margin-bottom: -0.35em;
 }
 
 .result-title-svg-text {
@@ -76,12 +97,9 @@
 }
 
 .result-ribbon-wrap {
-  position: absolute;
-  left: 50%;
-  top: 19cqh;
-  transform: translateX(-50%);
-  z-index: 6;
-  width: min(58cqw, 540px);
+  position: relative;
+  width: min(100%, 540px);
+  line-height: 0;
   pointer-events: none;
 }
 
@@ -89,13 +107,14 @@
   width: 100%;
   height: auto;
   display: block;
+  margin-bottom: -8%;
 }
 
 /* Curved ribbon label — follows the arch of result_ribbon.png */
 .result-ribbon-svg {
   position: absolute;
   left: 50%;
-  top: 40%;
+  top: 55%;
   transform: translate(-50%, -50%);
   width: 94%;
   height: auto;
@@ -114,21 +133,6 @@
   letter-spacing: 0.03em;
 }
 
-/* Badge + caption + buttons — one centered column below the ribbon */
-.result-center-col {
-  position: absolute;
-  left: 50%;
-  top: 34cqh;
-  transform: translateX(-50%);
-  z-index: 10;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: min(1.2cqh, 10px);
-  width: min(92cqw, 720px);
-  pointer-events: none;
-}
-
 .result-badge {
   width: min(30cqw, 260px);
   height: auto;
@@ -137,19 +141,22 @@
   filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.22));
 }
 
-/* Caption + buttons on the beach (no green footer bar) */
-.result-bottom {
-  position: relative;
+/* Caption + buttons — tighter gap than main sections */
+.result-footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: min(1.8cqh, 14px);
+  gap: clamp(16px, 2.2cqh, 24px);
   width: 100%;
-  pointer-events: none;
 }
 
-.result-bottom .result-actions {
+.result-footer .result-actions {
   pointer-events: auto;
+}
+
+.result-footer .result-message,
+.result-footer .result-actions {
+  width: 100%;
 }
 
 .result-message {
@@ -322,21 +329,13 @@
 
 /* Fallback when container queries unsupported */
 @supports not (height: 1cqh) {
-  .result-title-wrap {
-    top: 10%;
-    width: min(88vw, 640px);
+  .result-main {
+    width: min(92vw, 720px);
+    padding: 20px 16px;
   }
 
   .result-title-svg-text {
     font-size: clamp(44px, 7.5vw, 70px);
-  }
-
-  .result-ribbon-wrap {
-    top: 20%;
-  }
-
-  .result-center-col {
-    top: 30%;
   }
 }
 
@@ -356,8 +355,8 @@
     bottom: 30cqh;
   }
 
-  .result-center-col {
-    top: 33cqh;
+  .result-main {
+    width: min(94cqw, 520px);
   }
 
   .result-badge {
@@ -365,7 +364,7 @@
   }
 
   .result-ribbon-wrap {
-    width: min(72cqw, 460px);
+    width: min(100%, 460px);
   }
 
   .result-ribbon-svg-text--name {
@@ -376,26 +375,9 @@
     font-size: 17px !important;
   }
 
-  .result-title-wrap {
-    width: min(92cqw, 560px);
-  }
-
   .result-title-svg-text {
     font-size: 54px;
     stroke-width: 5px;
-  }
-
-  .result-center-col {
-    width: min(94cqw, 520px);
-  }
-
-  .result-title-wrap {
-    top: 9cqh;
-  }
-
-  .result-ribbon-wrap {
-    top: 19cqh;
-    width: min(78cqw, 380px);
   }
 }
 
@@ -420,8 +402,8 @@
     max-height: 30cqh;
   }
 
-  .result-center-col {
-    top: 32cqh;
-    gap: 8px;
+  .result-main {
+    gap: 10px;
+    padding: 10px 12px;
   }
 }
