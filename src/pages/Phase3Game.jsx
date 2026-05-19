@@ -281,7 +281,7 @@ function Phase3Game() {
 
   const handleContinue = () => {
     completePhase(3)
-    navigate('/map')
+    navigate('/results')
   }
 
   const timerRatio = Math.max(0, Math.min(1, timeLeft / ITEM_SECONDS))

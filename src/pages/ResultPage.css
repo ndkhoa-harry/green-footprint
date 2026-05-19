@@ -1,0 +1,427 @@
+/* One screen, no scroll: navbar + scene + actions = 100dvh */
+.result-page {
+  height: 100dvh;
+  max-height: 100dvh;
+  width: 100%;
+  overflow: hidden;
+  background: var(--green-darkest);
+}
+
+.result-capture {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Navbar is absolute globally; keep it in the flex column on this page */
+.result-capture .navbar {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.result-scene {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  container-type: size;
+  container-name: result;
+}
+
+/* Curved “CHÚC MỪNG” — arches upward like the design */
+.result-title-wrap {
+  position: absolute;
+  left: 50%;
+  top: 8cqh;
+  transform: translateX(-50%);
+  z-index: 5;
+  width: min(88cqw, 640px);
+  overflow: visible;
+  pointer-events: none;
+}
+
+.result-title-svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  display: block;
+}
+
+.result-title-svg-text {
+  fill: var(--green-primary);
+  font-family: var(--font-display);
+  font-size: 70px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  stroke: #fff;
+  stroke-width: 6px;
+  paint-order: stroke fill;
+}
+
+.result-title-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.result-ribbon-wrap {
+  position: absolute;
+  left: 50%;
+  top: 19cqh;
+  transform: translateX(-50%);
+  z-index: 6;
+  width: min(58cqw, 540px);
+  pointer-events: none;
+}
+
+.result-ribbon-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Curved ribbon label — follows the arch of result_ribbon.png */
+.result-ribbon-svg {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  width: 94%;
+  height: auto;
+  overflow: visible;
+}
+
+.result-ribbon-svg-text {
+  fill: #fff;
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.result-ribbon-svg-text--message {
+  letter-spacing: 0.03em;
+}
+
+/* Badge + caption + buttons — one centered column below the ribbon */
+.result-center-col {
+  position: absolute;
+  left: 50%;
+  top: 34cqh;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: min(1.2cqh, 10px);
+  width: min(92cqw, 720px);
+  pointer-events: none;
+}
+
+.result-badge {
+  width: min(30cqw, 260px);
+  height: auto;
+  flex-shrink: 0;
+  pointer-events: none;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.22));
+}
+
+/* Caption + buttons on the beach (no green footer bar) */
+.result-bottom {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: min(1.8cqh, 14px);
+  width: 100%;
+  pointer-events: none;
+}
+
+.result-bottom .result-actions {
+  pointer-events: auto;
+}
+
+.result-message {
+  position: relative;
+  left: auto;
+  bottom: auto;
+  transform: none;
+  width: 100%;
+  padding: 10px 18px;
+  text-align: center;
+  background: rgba(255, 252, 245, 0.88);
+  border-radius: 12px;
+  border: 2px solid rgba(45, 122, 58, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  pointer-events: none;
+  box-sizing: border-box;
+}
+
+.result-message p {
+  margin: 0;
+  font-size: min(2cqh, 14px);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--green-darkest);
+}
+
+.result-message p + p {
+  margin-top: 2px;
+}
+
+.result-mascot {
+  position: absolute;
+  left: 3%;
+  bottom: 22cqh;
+  width: min(20cqw, 190px);
+  height: auto;
+  z-index: 7;
+  pointer-events: none;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.25));
+}
+
+/* Certificate card — CSS frame */
+.result-certificate {
+  position: absolute;
+  right: 3%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 8;
+  width: min(32cqw, 340px);
+  max-height: 52cqh;
+  padding: 14px 18px 18px;
+  background: linear-gradient(180deg, #fffef9 0%, #f8f4e8 100%);
+  border: 3px solid var(--green-darkest);
+  border-radius: 14px;
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.22),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.6);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.result-certificate::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 2px solid rgba(45, 122, 58, 0.35);
+  border-radius: 10px;
+  pointer-events: none;
+}
+
+.result-cert-title {
+  margin: 0 0 10px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: min(2.4cqh, 18px);
+  font-weight: 800;
+  color: var(--green-darkest);
+  letter-spacing: 0.06em;
+}
+
+.result-cert-body {
+  position: relative;
+  z-index: 1;
+}
+
+.result-cert-line {
+  margin: 0 0 6px;
+  font-size: min(1.8cqh, 13px);
+  line-height: 1.35;
+  color: var(--text-dark);
+}
+
+.result-cert-label {
+  font-weight: 600;
+  color: var(--green-dark);
+}
+
+.result-cert-desc {
+  margin: 8px 0 0;
+  padding-left: 2px;
+  padding-right: 48px;
+  font-size: min(1.65cqh, 12px);
+  line-height: 1.45;
+  color: var(--green-darkest);
+}
+
+.result-cert-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25em;
+  height: 1.25em;
+  margin-right: 4px;
+  border-radius: 50%;
+  background: var(--green-primary);
+  color: #fff;
+  font-size: 0.75em;
+  font-weight: 800;
+  vertical-align: middle;
+}
+
+.result-cert-seal {
+  position: absolute;
+  right: 8px;
+  bottom: 6px;
+  width: min(8cqw, 48px);
+  height: auto;
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+.result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(10px, 2cqw, 18px);
+  width: 100%;
+  padding: 0;
+  background: transparent;
+}
+
+.result-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 140px;
+  padding: 11px 22px;
+  font-family: var(--font-display);
+  font-size: clamp(14px, 1.6vw, 17px);
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(180deg, var(--green-primary) 0%, var(--green-dark) 100%);
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: filter 0.15s ease, transform 0.15s ease;
+}
+
+.result-btn:hover {
+  filter: brightness(1.08);
+  transform: translateY(-2px);
+}
+
+.result-btn:active {
+  transform: translateY(0);
+}
+
+/* Fallback when container queries unsupported */
+@supports not (height: 1cqh) {
+  .result-title-wrap {
+    top: 10%;
+    width: min(88vw, 640px);
+  }
+
+  .result-title-svg-text {
+    font-size: clamp(44px, 7.5vw, 70px);
+  }
+
+  .result-ribbon-wrap {
+    top: 20%;
+  }
+
+  .result-center-col {
+    top: 30%;
+  }
+}
+
+@media (max-width: 900px) {
+  .result-certificate {
+    right: 50%;
+    top: auto;
+    bottom: 32cqh;
+    transform: translateX(50%);
+    width: min(88cqw, 340px);
+    max-height: 26cqh;
+  }
+
+  .result-mascot {
+    width: min(24cqw, 120px);
+    left: 2%;
+    bottom: 30cqh;
+  }
+
+  .result-center-col {
+    top: 33cqh;
+  }
+
+  .result-badge {
+    width: min(34cqw, 200px);
+  }
+
+  .result-ribbon-wrap {
+    width: min(72cqw, 460px);
+  }
+
+  .result-ribbon-svg-text--name {
+    font-size: 20px !important;
+  }
+
+  .result-ribbon-svg-text--message {
+    font-size: 17px !important;
+  }
+
+  .result-title-wrap {
+    width: min(92cqw, 560px);
+  }
+
+  .result-title-svg-text {
+    font-size: 54px;
+    stroke-width: 5px;
+  }
+
+  .result-center-col {
+    width: min(94cqw, 520px);
+  }
+
+  .result-title-wrap {
+    top: 9cqh;
+  }
+
+  .result-ribbon-wrap {
+    top: 19cqh;
+    width: min(78cqw, 380px);
+  }
+}
+
+@media (max-width: 520px) {
+  .result-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .result-btn {
+    width: 100%;
+    min-width: 0;
+    padding: 10px 16px;
+  }
+
+  .result-mascot {
+    display: none;
+  }
+
+  .result-certificate {
+    bottom: 38cqh;
+    max-height: 30cqh;
+  }
+
+  .result-center-col {
+    top: 32cqh;
+    gap: 8px;
+  }
+}

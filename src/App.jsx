@@ -7,6 +7,7 @@ import MapPage from './pages/MapPage'
 import Phase1Game from './pages/Phase1Game'
 import Phase2Game from './pages/Phase2Game'
 import Phase3Game from './pages/Phase3Game'
+import ResultPage from './pages/ResultPage'
 import HomePage from './pages/HomePage'
 import './App.css'
 
@@ -22,6 +23,7 @@ function App() {
             <Route path="/phase/1" element={<Phase1Game />} />
             <Route path="/phase/2" element={<Phase2Game />} />
             <Route path="/phase/3" element={<Phase3Game />} />
+            <Route path="/results" element={<ResultPage />} />
             <Route path="/home" element={<HomePage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>

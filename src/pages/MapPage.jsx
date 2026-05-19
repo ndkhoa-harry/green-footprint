@@ -23,9 +23,10 @@ function MapPage() {
   const { gameState, isPhaseCompleted } = useGame()
   const currentIdx = gameState.currentPhase - 1
   const mascotPos = mascotPositions[Math.min(currentIdx, 2)]
+  const allPhasesComplete = [1, 2, 3].every((p) => isPhaseCompleted(p))
 
   const handleStageClick = (phase) => {
-    if (phase === gameState.currentPhase) {
+    if (allPhasesComplete || phase === gameState.currentPhase) {
       navigate(`/phase/${phase}`)
     }
   }
@@ -47,12 +48,12 @@ function MapPage() {
               const phase = idx + 1
               const completed = isPhaseCompleted(phase)
               const isCurrent = phase === gameState.currentPhase
-              const isLocked = phase > gameState.currentPhase
+              const isLocked = !allPhasesComplete && phase > gameState.currentPhase
 
               return (
                 <button
                   key={phase}
-                  className={`stage-hotspot ${completed ? 'completed' : ''} ${isCurrent ? 'current' : ''} ${isLocked ? 'locked' : ''}`}
+                  className={`stage-hotspot ${completed ? 'completed' : ''} ${isCurrent ? 'current' : ''} ${isLocked ? 'locked' : ''} ${allPhasesComplete ? 'replay' : ''}`}
                   style={{ top: pos.top, left: pos.left }}
                   onClick={() => handleStageClick(phase)}
                   disabled={isLocked}
