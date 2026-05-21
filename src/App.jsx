@@ -1,4 +1,5 @@
-import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { HashRouter as Router, Route, Navigate } from 'react-router-dom'
+import PageShell from './components/PageShell'
 import { UserProvider } from './context/UserContext'
 import { GameProvider } from './context/GameContext'
 import InputPage from './pages/InputPage'
@@ -11,22 +12,24 @@ import ResultPage from './pages/ResultPage'
 import HomePage from './pages/HomePage'
 import './App.css'
 
+const routes = [
+  { path: '/', element: <InputPage /> },
+  { path: '/instructions', element: <InstructionPage /> },
+  { path: '/map', element: <MapPage /> },
+  { path: '/phase/1', element: <Phase1Game /> },
+  { path: '/phase/2', element: <Phase2Game /> },
+  { path: '/phase/3', element: <Phase3Game /> },
+  { path: '/results', element: <ResultPage /> },
+  { path: '/home', element: <HomePage /> },
+  { path: '*', element: <Navigate to="/" replace /> },
+]
+
 function App() {
   return (
     <UserProvider>
       <GameProvider>
         <Router>
-          <Routes>
-            <Route path="/" element={<InputPage />} />
-            <Route path="/instructions" element={<InstructionPage />} />
-            <Route path="/map" element={<MapPage />} />
-            <Route path="/phase/1" element={<Phase1Game />} />
-            <Route path="/phase/2" element={<Phase2Game />} />
-            <Route path="/phase/3" element={<Phase3Game />} />
-            <Route path="/results" element={<ResultPage />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
+          <PageShell routes={routes} />
         </Router>
       </GameProvider>
     </UserProvider>
