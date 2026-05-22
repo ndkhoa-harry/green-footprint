@@ -107,7 +107,8 @@ function InstructionPage() {
         <div className="instruction-content">
           <h1 className="instruction-title">HƯỚNG DẪN CHƠI</h1>
 
-          <div className="instruction-body">
+          <div className="instruction-stage">
+            <div className="instruction-body">
             {/* Left stage tabs */}
             <div className="stage-tabs">
               {stages.map((stage, idx) => (
@@ -146,9 +147,10 @@ function InstructionPage() {
                 ))}
               </div>
             </div>
+            </div>
           </div>
 
-          <button className="skip-button" onClick={handleSkip}>
+          <button type="button" className="skip-button" onClick={handleSkip}>
             SKIP
           </button>
         </div>
