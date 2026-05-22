@@ -66,6 +66,14 @@
   color: var(--gold);
 }
 
+.nav-link--certificate {
+  color: var(--gold);
+}
+
+.nav-link--certificate:hover {
+  color: #fff8dc;
+}
+
 .player-greeting {
   font-size: 17px;
   font-weight: 600;
@@ -99,8 +107,14 @@
     height: 52px;
   }
 
-  .nav-link {
+  .nav-link:not(.nav-link--certificate) {
     display: none;
+  }
+
+  .nav-link--certificate {
+    font-size: 12px;
+    letter-spacing: 0;
+    white-space: nowrap;
   }
 
   .logo-text {

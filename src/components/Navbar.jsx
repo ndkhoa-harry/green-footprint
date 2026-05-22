@@ -2,13 +2,16 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Volume2, VolumeX } from 'lucide-react'
 import { useUser } from '../context/UserContext'
+import { useGame } from '../context/GameContext'
 import logoImg from '../assets/logo.png'
 import './Navbar.css'
 
 function Navbar({ showGreeting = true }) {
   const [soundOn, setSoundOn] = useState(false)
   const { user } = useUser()
+  const { isPhaseCompleted } = useGame()
   const playerName = user?.name?.trim()
+  const allPhasesComplete = [1, 2, 3].every((p) => isPhaseCompleted(p))
 
   return (
     <nav className="navbar">
@@ -27,6 +30,11 @@ function Navbar({ showGreeting = true }) {
           <Link to="/instructions" state={{ fromNav: true }} className="nav-link">
             HƯỚNG DẪN
           </Link>
+          {allPhasesComplete && (
+            <Link to="/results" className="nav-link nav-link--certificate">
+              XEM CHỨNG NHẬN
+            </Link>
+          )}
           {showGreeting && playerName && (
             <span className="player-greeting">
               <em>Xin chào, &quot;{playerName}&quot;</em>
