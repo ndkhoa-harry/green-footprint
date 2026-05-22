@@ -33,7 +33,7 @@ function ResultPage() {
   }
 
   const handleHome = () => {
-    navigate('/home')
+    navigate('/')
   }
 
   if (!isPhaseCompleted(3)) {

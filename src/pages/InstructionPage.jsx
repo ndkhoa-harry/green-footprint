@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
 import bgImage from '../assets/home_background.png'
 
@@ -84,9 +84,15 @@ const stages = [
 function InstructionPage() {
   const [activeStage, setActiveStage] = useState(0)
   const navigate = useNavigate()
+  const location = useLocation()
+  const fromNav = location.state?.fromNav === true
   const current = stages[activeStage]
 
   const handleSkip = () => {
+    if (fromNav) {
+      navigate(-1)
+      return
+    }
     navigate('/map')
   }
 

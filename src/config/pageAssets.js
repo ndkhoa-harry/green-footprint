@@ -4,6 +4,11 @@ import loadingLogo from '../assets/loading_logo.png'
 import inputBg from '../assets/home_background.png'
 import inputMascot from '../assets/mascot_2.png'
 
+import introBg from '../assets/home_background.png'
+import introTitle from '../assets/introduction_title.png'
+import introMascot from '../assets/mascot_3.png'
+import introBadge from '../assets/badge.png'
+
 import instructBg from '../assets/home_background.png'
 import phase1Icon from '../assets/phase_1_icon.png'
 import phase2Icon from '../assets/phase_2_icon.png'
@@ -22,9 +27,6 @@ import mapMascot from '../assets/mascot_2.png'
 
 import homeBg from '../assets/home_background.png'
 import trophyImg from '../assets/trophy.png'
-import lb1 from '../assets/leaderboard_1.png'
-import lb2 from '../assets/leaderboard_2.png'
-import lb3 from '../assets/leaderboard_3.png'
 
 import resultBg from '../assets/result_background.png'
 import resultRibbon from '../assets/result_ribbon.png'
@@ -82,7 +84,9 @@ export const COMMON_ASSETS = [logoImg, loadingLogo]
 const TRASH = [p2t1, p2t2, p2t3, p2t4, p2t5, p2t6, p2t7, p2t8, p2t9, p2t10, p2t11, p2t12]
 
 export const PAGE_ASSETS = {
-  '/': [inputBg, inputMascot],
+  '/': [homeBg, trophyImg],
+  '/introduction': [introBg, introTitle, introMascot, introBadge],
+  '/input': [inputBg, inputMascot],
   '/instructions': [
     instructBg,
     phase1Icon,
@@ -97,7 +101,7 @@ export const PAGE_ASSETS = {
     bullet7,
   ],
   '/map': [mapBg, mapImg, mapMascot],
-  '/home': [homeBg, trophyImg, lb1, lb2, lb3],
+  '/home': [homeBg, trophyImg],
   '/results': [resultBg, resultRibbon, badgeImg, resultMascot],
   '/phase/1': [
     p1Home,

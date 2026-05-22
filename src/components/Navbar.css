@@ -24,6 +24,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  text-decoration: none;
   transition: transform 0.2s;
 }
 
@@ -57,6 +58,7 @@
   font-size: 17px;
   letter-spacing: 0.3px;
   color: #ffffff;
+  text-decoration: none;
   transition: color 0.25s;
 }
 

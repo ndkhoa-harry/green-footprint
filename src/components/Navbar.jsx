@@ -1,30 +1,37 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Volume2, VolumeX } from 'lucide-react'
 import { useUser } from '../context/UserContext'
 import logoImg from '../assets/logo.png'
 import './Navbar.css'
 
-function Navbar() {
+function Navbar({ showGreeting = true }) {
   const [soundOn, setSoundOn] = useState(false)
   const { user } = useUser()
-  const playerName = user?.name || 'tên người chơi'
+  const playerName = user?.name?.trim()
 
   return (
     <nav className="navbar">
       <div className="navbar-inner">
-        <a href="/" className="navbar-logo">
+        <Link to="/" className="navbar-logo">
           <img src={logoImg} alt="Green Footprint" className="logo-img" />
           <span className="logo-text">
             GREEN<br />FOOTPRINT
           </span>
-        </a>
+        </Link>
 
         <div className="navbar-right">
-          <a href="#gioi-thieu" className="nav-link">GIỚI THIỆU</a>
-          <a href="#huong-dan" className="nav-link">HƯỚNG DẪN</a>
-          <span className="player-greeting">
-            <em>Xin chào, "{playerName}"</em>
-          </span>
+          <Link to="/introduction" state={{ fromNav: true }} className="nav-link">
+            GIỚI THIỆU
+          </Link>
+          <Link to="/instructions" state={{ fromNav: true }} className="nav-link">
+            HƯỚNG DẪN
+          </Link>
+          {showGreeting && playerName && (
+            <span className="player-greeting">
+              <em>Xin chào, &quot;{playerName}&quot;</em>
+            </span>
+          )}
           <button
             className="sound-toggle"
             onClick={() => setSoundOn(!soundOn)}
