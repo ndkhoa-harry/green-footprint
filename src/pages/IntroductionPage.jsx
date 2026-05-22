@@ -41,7 +41,7 @@ function IntroductionPage() {
             <div className="introduction-card-wrap">
               <img
                 src={mascotImg}
-                alt="Milo"
+                alt="Dứa Nhỏ"
                 className="introduction-mascot"
                 draggable={false}
               />
@@ -60,7 +60,7 @@ function IntroductionPage() {
                   nhiệm.
                 </p>
                 <p>
-                  Trong hành trình này, người chơi sẽ cùng Milo khám phá các địa điểm du
+                  Trong hành trình này, người chơi sẽ cùng Dứa Nhỏ khám phá các địa điểm du
                   lịch, thu gom rác thải và học cách phân loại rác đúng cách để góp phần
                   bảo vệ môi trường 🌍
                 </p>

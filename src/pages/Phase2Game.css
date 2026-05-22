@@ -92,7 +92,7 @@
 .phase2-mascot-block {
   position: absolute;
   /* Anchor: lower-left corner of this block (feet sit on the bottom edge). */
-  left: 65%;
+  left: 70%;
   bottom: 30%;
   transform: none;
   width: min(38%, 360px);

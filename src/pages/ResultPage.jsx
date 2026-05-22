@@ -49,7 +49,7 @@ function ResultPage() {
           className="result-scene"
           style={{ backgroundImage: `url(${resultBg})` }}
         >
-          <img src={mascotImg} alt="Milo" className="result-mascot" draggable={false} />
+          <img src={mascotImg} alt="Dứa Nhỏ" className="result-mascot" draggable={false} />
 
           <article className="result-certificate" aria-label="Giấy chứng nhận">
             <h2 className="result-cert-title">GIẤY CHỨNG NHẬN</h2>

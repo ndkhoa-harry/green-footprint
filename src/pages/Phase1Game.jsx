@@ -270,7 +270,7 @@ function Phase1Game() {
             <div className="phase1-bubble">
               <p>{bubbleMessage}</p>
             </div>
-            <img src={mascotImg} alt="Milo" className="phase1-mascot" draggable={false} />
+            <img src={mascotImg} alt="Dứa Nhỏ" className="phase1-mascot" draggable={false} />
           </div>
 
           {drag && (

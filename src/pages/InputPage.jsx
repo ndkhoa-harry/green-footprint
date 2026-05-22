@@ -38,7 +38,7 @@ function InputPage() {
               <span className="leaf-icon">🌿</span>
             </h1>
             <p className="input-subtitle">
-              Hehe, mình là Milo. Mình có thể gọi bạn là gì đây nhỉ?
+              Hehe, mình là Dứa Nhỏ. Mình có thể gọi bạn là gì đây nhỉ?
             </p>
 
             <form className="input-form" onSubmit={handleSubmit}>

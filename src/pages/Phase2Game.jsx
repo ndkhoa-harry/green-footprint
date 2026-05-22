@@ -114,7 +114,7 @@ function Phase2Game() {
             <div className="phase2-bubble">
               <p>{MASCOT_MESSAGE}</p>
             </div>
-            <img src={mascotImg} alt="Milo" className="phase2-mascot" draggable={false} />
+            <img src={mascotImg} alt="Dứa Nhỏ" className="phase2-mascot" draggable={false} />
           </div>
 
           <div className="phase2-items-layer" aria-hidden>

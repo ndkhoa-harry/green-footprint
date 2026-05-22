@@ -66,7 +66,7 @@ const stages = [
     id: 3,
     label: 'CHẶNG 3',
     icon: phase3Icon,
-    title: 'CHẶNG 3: PHÂN LOẠI CÙNG MILO',
+    title: 'CHẶNG 3: PHÂN LOẠI CÙNG DỨA NHỎ',
     instructions: [
       {
         icon: bullet6,
