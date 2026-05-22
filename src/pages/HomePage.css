@@ -79,6 +79,10 @@
   padding-bottom: 40px;
 }
 
+.hero-mascot .mascot-img {
+  width: 256px; /* 80% of default 320px */
+}
+
 /* ===== BOTTOM BAR (overlay at bottom of hero) ===== */
 .bottom-bar {
   position: relative;
@@ -191,6 +195,14 @@
 
   .hero-mascot {
     padding-bottom: 16px;
+  }
+
+  .hero-mascot .mascot-img {
+    width: 160px; /* 80% of default 200px */
+  }
+
+  .hero-mascot .speech-bubble {
+    max-width: 152px;
   }
 
   .bottom-bar {

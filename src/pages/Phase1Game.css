@@ -168,7 +168,7 @@
 }
 
 .phase1-mascot {
-  width: min(42%, 140px);
+  width: min(75%, 220px);
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
@@ -237,7 +237,7 @@
   }
 
   .phase1-mascot {
-    width: min(50%, 100px);
+    width: min(70%, 150px);
   }
 
   .phase1-complete p {

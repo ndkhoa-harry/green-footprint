@@ -4,7 +4,9 @@ import { useGame } from '../context/GameContext'
 import Navbar from '../components/Navbar'
 import homeBg from '../assets/home_background.png'
 import bedroomBg from '../assets/game_1_background.png'
-import mascotImg from '../assets/mascot_1.png'
+import mascotIntroImg from '../assets/mascot_1.png'
+import mascotHappyImg from '../assets/mascot_4.png'
+import mascotSadImg from '../assets/mascot_5.png'
 import extractionImg from '../assets/extraction_bottle.png'
 import containersImg from '../assets/containers.png'
 import reusableBottleImg from '../assets/reusable_bottle.png'
@@ -83,11 +85,11 @@ const ITEMS = [
 
 /** Positions inside suitcase (percent of drop zone) for packed good items */
 const SUITCASE_LAYOUT = {
-  extraction: { left: '10%', top: '48%', width: '28%' },
-  containers: { left: '38%', top: '42%', width: '34%' },
-  reusable_bottle: { left: '68%', top: '52%', width: '24%' },
-  power_bank: { left: '14%', top: '72%', width: '26%' },
-  reusable_bag: { left: '44%', top: '68%', width: '30%' },
+  extraction: { left: '10%', top: '30%', width: '20%' },
+  containers: { left: '42%', top: '30%', width: '20%' },
+  reusable_bottle: { left: '78%', top: '26%', width: '14%' },
+  power_bank: { left: '22%', top: '32%', width: '25%' },
+  reusable_bag: { left: '60%', top: '28%', width: '18%' },
 }
 
 function pointInRect(x, y, rect) {
@@ -104,8 +106,16 @@ function Phase1Game() {
     Object.fromEntries(ITEMS.map((i) => [i.id, 'closet'])),
   )
   const [bubbleMessage, setBubbleMessage] = useState(INTRO_MESSAGE)
+  const [mascotMood, setMascotMood] = useState('intro')
   const [drag, setDrag] = useState(null)
   const [rejectFlash, setRejectFlash] = useState(null)
+
+  const mascotImg =
+    mascotMood === 'happy'
+      ? mascotHappyImg
+      : mascotMood === 'sad'
+        ? mascotSadImg
+        : mascotIntroImg
 
   const goodIds = useMemo(() => ITEMS.filter((i) => i.good).map((i) => i.id), [])
   const allGoodPacked = useMemo(
@@ -143,8 +153,10 @@ function Phase1Game() {
         }
         setBubbleMessage(item.message)
         if (item.good) {
+          setMascotMood('happy')
           setPlacement((p) => ({ ...p, [item.id]: 'suitcase' }))
         } else {
+          setMascotMood('sad')
           setRejectFlash(item.id)
           setTimeout(() => setRejectFlash(null), 450)
         }

@@ -35,7 +35,9 @@ import resultMascot from '../assets/mascot_4.png'
 
 import p1Home from '../assets/home_background.png'
 import p1Bedroom from '../assets/game_1_background.png'
-import p1Mascot from '../assets/mascot_1.png'
+import p1MascotIntro from '../assets/mascot_1.png'
+import p1MascotHappy from '../assets/mascot_4.png'
+import p1MascotSad from '../assets/mascot_5.png'
 import p1Extraction from '../assets/extraction_bottle.png'
 import p1Containers from '../assets/containers.png'
 import p1ReusableBottle from '../assets/reusable_bottle.png'
@@ -106,7 +108,9 @@ export const PAGE_ASSETS = {
   '/phase/1': [
     p1Home,
     p1Bedroom,
-    p1Mascot,
+    p1MascotIntro,
+    p1MascotHappy,
+    p1MascotSad,
     p1Extraction,
     p1Containers,
     p1ReusableBottle,
